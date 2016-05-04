@@ -35,6 +35,9 @@
             this.tab_AO = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Btn_Save = new System.Windows.Forms.Button();
+            this.Btn_Copy = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.txt_Case = new System.Windows.Forms.TextBox();
             this.txt_Plant = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +56,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sCADAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pLCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indstillingerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.områderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pLCToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sCADAToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.netværkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tab_AI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -85,6 +95,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -127,6 +138,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Btn_Save);
+            this.panel1.Controls.Add(this.Btn_Copy);
+            this.panel1.Controls.Add(this.btn_Delete);
             this.panel1.Controls.Add(this.txt_Case);
             this.panel1.Controls.Add(this.txt_Plant);
             this.panel1.Controls.Add(this.label2);
@@ -143,6 +157,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1159, 117);
             this.panel1.TabIndex = 2;
+            // 
+            // Btn_Save
+            // 
+            this.Btn_Save.Location = new System.Drawing.Point(266, 82);
+            this.Btn_Save.Name = "Btn_Save";
+            this.Btn_Save.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Save.TabIndex = 7;
+            this.Btn_Save.Text = "Gem";
+            this.Btn_Save.UseVisualStyleBackColor = true;
+            this.Btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
+            // 
+            // Btn_Copy
+            // 
+            this.Btn_Copy.Location = new System.Drawing.Point(104, 82);
+            this.Btn_Copy.Name = "Btn_Copy";
+            this.Btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Copy.TabIndex = 7;
+            this.Btn_Copy.Text = "Copy";
+            this.Btn_Copy.UseVisualStyleBackColor = true;
+            this.Btn_Copy.Click += new System.EventHandler(this.Btn_Copy_Click);
+            // 
+            // btn_Delete
+            // 
+            this.btn_Delete.Location = new System.Drawing.Point(185, 82);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+            this.btn_Delete.TabIndex = 7;
+            this.btn_Delete.Text = "Slet";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // txt_Case
             // 
@@ -202,7 +246,6 @@
             this.cb_Area2.Name = "cb_Area2";
             this.cb_Area2.Size = new System.Drawing.Size(164, 21);
             this.cb_Area2.TabIndex = 4;
-            this.cb_Area2.SelectedIndexChanged += new System.EventHandler(this.cb_Area2_SelectedIndexChanged);
             // 
             // cb_Area1
             // 
@@ -212,17 +255,16 @@
             this.cb_Area1.Name = "cb_Area1";
             this.cb_Area1.Size = new System.Drawing.Size(164, 21);
             this.cb_Area1.TabIndex = 4;
-            this.cb_Area1.SelectedIndexChanged += new System.EventHandler(this.cb_Area1_SelectedIndexChanged);
             // 
             // btn_New
             // 
-            this.btn_New.Location = new System.Drawing.Point(980, 43);
+            this.btn_New.Location = new System.Drawing.Point(23, 82);
             this.btn_New.Name = "btn_New";
             this.btn_New.Size = new System.Drawing.Size(75, 23);
             this.btn_New.TabIndex = 3;
-            this.btn_New.Text = "Ny værdi";
+            this.btn_New.Text = "Ny";
             this.btn_New.UseVisualStyleBackColor = true;
-            this.btn_New.Click += new System.EventHandler(this.button3_Click);
+            this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
             // 
             // button2
             // 
@@ -249,7 +291,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.sCADAToolStripMenuItem,
-            this.pLCToolStripMenuItem});
+            this.pLCToolStripMenuItem,
+            this.indstillingerToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1165, 24);
@@ -299,6 +343,60 @@
             this.pLCToolStripMenuItem.Name = "pLCToolStripMenuItem";
             this.pLCToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.pLCToolStripMenuItem.Text = "PLC";
+            // 
+            // indstillingerToolStripMenuItem
+            // 
+            this.indstillingerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.områderToolStripMenuItem,
+            this.pLCToolStripMenuItem1,
+            this.sCADAToolStripMenuItem1,
+            this.netværkToolStripMenuItem});
+            this.indstillingerToolStripMenuItem.Name = "indstillingerToolStripMenuItem";
+            this.indstillingerToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.indstillingerToolStripMenuItem.Text = "Indstillinger";
+            // 
+            // områderToolStripMenuItem
+            // 
+            this.områderToolStripMenuItem.Name = "områderToolStripMenuItem";
+            this.områderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.områderToolStripMenuItem.Text = "Områder";
+            this.områderToolStripMenuItem.Click += new System.EventHandler(this.områderToolStripMenuItem_Click);
+            // 
+            // pLCToolStripMenuItem1
+            // 
+            this.pLCToolStripMenuItem1.Name = "pLCToolStripMenuItem1";
+            this.pLCToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pLCToolStripMenuItem1.Text = "PLC";
+            this.pLCToolStripMenuItem1.Click += new System.EventHandler(this.pLCToolStripMenuItem1_Click);
+            // 
+            // sCADAToolStripMenuItem1
+            // 
+            this.sCADAToolStripMenuItem1.Name = "sCADAToolStripMenuItem1";
+            this.sCADAToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.sCADAToolStripMenuItem1.Text = "SCADA";
+            this.sCADAToolStripMenuItem1.Click += new System.EventHandler(this.sCADAToolStripMenuItem1_Click);
+            // 
+            // netværkToolStripMenuItem
+            // 
+            this.netværkToolStripMenuItem.Name = "netværkToolStripMenuItem";
+            this.netværkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.netværkToolStripMenuItem.Text = "Netværk";
+            this.netværkToolStripMenuItem.Click += new System.EventHandler(this.netværkToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.omToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // omToolStripMenuItem
+            // 
+            this.omToolStripMenuItem.Name = "omToolStripMenuItem";
+            this.omToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.omToolStripMenuItem.Text = "Om";
+            this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -352,6 +450,16 @@
         private System.Windows.Forms.Label lbl_CaseNumber;
         private System.Windows.Forms.ToolStripMenuItem gemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem åbenToolStripMenuItem;
+        private System.Windows.Forms.Button Btn_Save;
+        private System.Windows.Forms.Button Btn_Copy;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.ToolStripMenuItem indstillingerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem områderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pLCToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sCADAToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem netværkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
     }
 }
 

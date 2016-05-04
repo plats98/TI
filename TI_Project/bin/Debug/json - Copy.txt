@@ -8,13 +8,17 @@
       "KKS": "KE10NDA20CU10",
       "Address": {
         "ID": 0,
-        "STB": null,
-        "Unity": null
+        "WordType": 2,
+        "DeviceType": 2,
+        "Address": 42414,
+        "Bit": -1,
+        "DeviceName": null,
+        "DeviceIP": null
       },
       "Description": "dfgfdg",
       "LowHigh": false,
       "LowLowHighHigh": false,
-      "EGU": "",
+      "EGU": "Nm³",
       "Historian": false,
       "Area1": {
         "ID": 2,
@@ -27,8 +31,38 @@
       "KKS": "KE10NDA30CU10",
       "Address": {
         "ID": 0,
-        "STB": null,
-        "Unity": null
+        "WordType": 0,
+        "DeviceType": 0,
+        "Address": 457,
+        "Bit": 7,
+        "DeviceName": null,
+        "DeviceIP": null
+      },
+      "Description": "jkmpl",
+      "LowHigh": false,
+      "LowLowHighHigh": false,
+      "EGU": "",
+      "Historian": false,
+      "Area1": {
+        "ID": 3,
+        "Name": "Vejnavn3"
+      },
+      "Area2": {
+        "ID": 5,
+        "Name": "Fællesanlæg5"
+      },
+      "Area3": null
+    },
+    {
+      "KKS": null,
+      "Address": {
+        "ID": 0,
+        "WordType": 3,
+        "DeviceType": 1,
+        "Address": 87,
+        "Bit": -1,
+        "DeviceName": null,
+        "DeviceIP": null
       },
       "Description": null,
       "LowHigh": false,
@@ -36,11 +70,9 @@
       "EGU": "",
       "Historian": false,
       "Area1": null,
-      "Area2": {
-        "ID": 5,
-        "Name": "Vejnavn5"
-      },
+      "Area2": null,
       "Area3": null
     }
-  ]
+  ],
+  "Areas": "TreeNode: Områder"
 }

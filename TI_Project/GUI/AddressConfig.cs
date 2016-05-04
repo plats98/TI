@@ -74,7 +74,7 @@ namespace TIProject.GUI
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
@@ -82,7 +82,10 @@ namespace TIProject.GUI
             analogSignal.Address.DeviceType = (DEVICETYPE)cb_Device.SelectedIndex;
             analogSignal.Address.WordType = (WORDTYPE)cb_Type.SelectedIndex;
             analogSignal.Address.Address = int.Parse(txt_Address.Text);
-            analogSignal.Address.Bit = int.Parse(cb_Bit.Text);
+            if (cb_Bit.Enabled)
+                analogSignal.Address.Bit = int.Parse(cb_Bit.Text);
+            else
+                analogSignal.Address.Bit = -1;
             this.Close();
         }
     }

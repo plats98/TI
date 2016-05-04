@@ -22,9 +22,6 @@ namespace TIProject.GUI
         Project project = new Project();
         private Factory factory = new Factory();
 
-        public Area area1 { get; private set; }
-        public Area area2 { get; private set; }
-
         public Main()
         {
             InitializeComponent();
@@ -144,17 +141,6 @@ namespace TIProject.GUI
 
             AddColumns();
             setupCustomGridData();
-
-
-            BindingSource bs_Area1 = new BindingSource();
-            bs_Area1.DataSource = factory.GetAreas(null);
-            cb_Area1.DataSource = bs_Area1.DataSource;
-            if (cb_Area1.Items.Count > 0) cb_Area1.SelectedIndex = 0;
-
-            cb_Area1.DisplayMember = "Name";
-            cb_Area1.ValueMember = null;
-
-
         }
 
         // Configures columns for the DataGridView control.
@@ -201,9 +187,9 @@ namespace TIProject.GUI
             DataGridViewComboBoxColumn dg_cb_Area1 = new DataGridViewComboBoxColumn();
             dg_cb_Area1.Name = MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area1);
             dg_cb_Area1.HeaderText = "Område 1";
-            dg_cb_Area1.DisplayMember = "Name";
+            dg_cb_Area1.DisplayMember = "Description";
             dg_cb_Area1.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            dg_cb_Area1.ValueMember = "ID";
+            dg_cb_Area1.ValueMember = "GUID";
             dg_cb_Area1.DataSource = factory.GetAreas(null);
             dataGridView1.Columns.Insert(3, dg_cb_Area1); //TODO: handle index
 
@@ -211,10 +197,10 @@ namespace TIProject.GUI
             DataGridViewComboBoxColumn dg_cb_Area2 = new DataGridViewComboBoxColumn();
             dg_cb_Area2.Name = MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area2);
             dg_cb_Area2.HeaderText = "Område 2";
-            dg_cb_Area2.DisplayMember = "Name";
+            dg_cb_Area2.DisplayMember = "Description";
             dg_cb_Area2.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            dg_cb_Area2.ValueMember = "ID";
-            dg_cb_Area2.DataSource = factory.GetAreas(new Area(5, "Fællesanlæg5"));
+            dg_cb_Area2.ValueMember = "GUID";
+            dg_cb_Area2.DataSource = factory.GetAreas(new Area("", "Fællesanlæg5"));
             dataGridView1.Columns.Insert(4, dg_cb_Area2); //TODO: handle index
 
             // Handle EGU column
@@ -227,7 +213,7 @@ namespace TIProject.GUI
             dataGridView1.Columns.Insert(5, dg_cb_EGU); //TODO: handle index
 
 
-
+            /*
             // Add a button column. 
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "";
@@ -235,7 +221,7 @@ namespace TIProject.GUI
             buttonColumn.Text = "Request Status";
             buttonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Insert(1, buttonColumn); // n is index
-
+            */
         }
 
         private void setupCustomGridData()
@@ -247,22 +233,14 @@ namespace TIProject.GUI
 
                 current = (AnalogSignal)row.DataBoundItem;
                 if (current.Area1 != null)
-                    row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area1)].Value = current.Area1.ID;
+                    row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area1)].Value = current.Area1.GUID;
                 if (current.Area2 != null)
-                    row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area2)].Value = current.Area2.ID;
+                    row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area2)].Value = current.Area2.GUID;
                 if (current.EGU != null)
                     row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().EGU)].Value = current.EGU;
             }
         }
 
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AnalogInput ai = new AnalogInput(this);
-            ai.StartPosition = FormStartPosition.Manual;
-            ai.Location = new Point(this.Location.X + (this.Width - ai.Width) / 2, this.Location.Y + (this.Height - ai.Height) / 2);
-            ai.Show(this);
-        }
 
         private void sCADAToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -270,28 +248,6 @@ namespace TIProject.GUI
             scada.StartPosition = FormStartPosition.Manual;
             scada.Location = new Point(this.Location.X + (this.Width - scada.Width) / 2, this.Location.Y + (this.Height - scada.Height) / 2);
             scada.Show(this);
-        }
-
-        private void cb_Area1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            area1 = (Area)cb_Area1.SelectedItem;
-
-
-            BindingSource bs_Area2 = new BindingSource();
-            bs_Area2.DataSource = factory.GetAreas(new Area(5, "test"));
-            cb_Area2.DataSource = bs_Area2.DataSource;
-            if (cb_Area2.Items.Count > 0) cb_Area2.SelectedIndex = 0;
-
-            cb_Area2.DisplayMember = "Name";
-            cb_Area2.ValueMember = null;
-
-            //foreach (Area area in factory.GetAreas(area1)) cb_Area2.Items.Add(area.Name);
-            //if (cb_Area2.Items.Count > 0) cb_Area2.SelectedIndex = 0;
-        }
-
-        private void cb_Area2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            area2 = (Area)cb_Area2.SelectedItem;
         }
 
         private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -336,13 +292,18 @@ namespace TIProject.GUI
             // dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
         }
 
+        public void addRow(AnalogSignal analogSignal)
+        {
+            project.AnalogSignals.Add(analogSignal);
+            setupCustomGridData();
+        }
+
 
         /// <summary>
         /// Update list with combobox data
         /// </summary>
         private void updateGridData()
         {
-            int id;
             DataGridViewCell cell;
             AnalogSignal analogSignal;
 
@@ -354,13 +315,12 @@ namespace TIProject.GUI
 
                 //Fix area 1
                 cell = row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area1)];
-                if (int.TryParse("" + cell.Value, out id))
-                    analogSignal.Area1 = factory.GetAreas(null).SingleOrDefault(area => area.ID == id); // http://stackoverflow.com/questions/1175645/find-an-item-in-list-by-linq
+                // http://stackoverflow.com/questions/1175645/find-an-item-in-list-by-linq
+                analogSignal.Area1 = factory.GetAreas(null).SingleOrDefault(area => String.Equals(area.GUID,cell.Value.ToString(), StringComparison.OrdinalIgnoreCase));
 
                 //Fix area 2
                 cell = row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area2)];
-                if (int.TryParse("" + cell.Value, out id))
-                    analogSignal.Area2 = factory.GetAreas(analogSignal.Area1).SingleOrDefault(area => area.ID == id);
+                analogSignal.Area2 = factory.GetAreas(analogSignal.Area1).SingleOrDefault(area => String.Equals(area.GUID, cell.Value.ToString(), StringComparison.OrdinalIgnoreCase));
 
                 //Fix EGU
                 cell = row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().EGU)];
@@ -430,6 +390,78 @@ namespace TIProject.GUI
                     e.Cancel = true;
                     break;
             }
+        }
+
+        private void Btn_Save_Click(object sender, EventArgs e)
+        {
+            updateGridData();
+            factory.Save(project);
+        }
+
+        private void Btn_Copy_Click(object sender, EventArgs e)
+        {
+            AnalogSignal analogSignal = (AnalogSignal)dataGridView1.CurrentRow.DataBoundItem;
+
+            AnalogInput ai = new AnalogInput(this, analogSignal);
+            ai.StartPosition = FormStartPosition.Manual;
+            ai.Location = new Point(this.Location.X + (this.Width - ai.Width) / 2, this.Location.Y + (this.Height - ai.Height) / 2);
+            ai.Show(this);
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            AnalogSignal analogSignal;
+
+            // Delete all selected rows (only completly selected rows)
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                analogSignal = (AnalogSignal)row.DataBoundItem;
+                // TODO save deleted rows
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+
+            /*
+            // Delete all rows witch contains selected cells
+            foreach (DataGridViewCell oneCell in dataGridView1.SelectedCells)
+                if (oneCell.Selected)
+                    dataGridView1.Rows.RemoveAt(oneCell.RowIndex);            
+            */
+        }
+
+        private void btn_New_Click(object sender, EventArgs e)
+        {
+            AnalogInput ai = new AnalogInput(this, null);
+            ai.StartPosition = FormStartPosition.Manual;
+            ai.Location = new Point(this.Location.X + (this.Width - ai.Width) / 2, this.Location.Y + (this.Height - ai.Height) / 2);
+            ai.Show(this);
+        }
+
+        private void områderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Areas areas = new Areas();
+            areas.StartPosition = FormStartPosition.Manual;
+            areas.Location = new Point(this.Location.X + (this.Width - areas.Width) / 2, this.Location.Y + (this.Height - areas.Height) / 2);
+            areas.Show(this);
+        }
+
+        private void pLCToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sCADAToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void netværkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void omToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

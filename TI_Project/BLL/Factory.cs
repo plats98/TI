@@ -47,7 +47,7 @@ namespace TIProject.BLL
         {
             BindingList<string> list = new BindingList<string>();
 
-            for (int i = 0; i <= 16; i++)
+            for (int i = -1; i <= 17; i++)
             {
                 list.Add(i.ToString());
             }
@@ -61,22 +61,19 @@ namespace TIProject.BLL
 
             if (area == null)
             {
-                list.Add(new Area(1, "Vejnavn1"));
-                list.Add(new Area(2, "Vejnavn2"));
-                list.Add(new Area(3, "Vejnavn3"));
-                list.Add(new Area(4, "Vejnavn4"));
-                list.Add(new Area(5, "Vejnavn5"));
-                list.Add(new Area(6, "Vejnavn6"));
-                list.Add(new Area(7, "Vejnavn7"));
+                list.Add(new Area("2124033B-5583-4EAA-B229-BC8A46B8B91B", "Vejnavn1"));
+                list.Add(new Area("43E372BE-B5BB-416C-85D3-F79BE693DD92", "Vejnavn2"));
+                list.Add(new Area("EDC394E8-1C10-4009-8B67-029FE3ABBFFB", "Vejnavn3"));
+                list.Add(new Area("EE259A26-6107-48E9-8504-9874D5A4CF36", "Vejnavn4"));
+                list.Add(new Area("90B71D8C-F72F-43E1-94CB-0D0BB9202747", "Vejnavn5"));
             }
             else
             {
-                list.Add(new Area(1, "Fællesanlæg1"));
-                list.Add(new Area(2, "Fællesanlæg2"));
-                list.Add(new Area(3, "Fællesanlæg3"));
-                list.Add(new Area(4, "Fællesanlæg4"));
-                list.Add(new Area(5, "Fællesanlæg5"));
-                list.Add(new Area(6, "Fællesanlæg6"));
+                list.Add(new Area("7278A0E9-C2E8-4201-8E2E-8BCF5FB2C0F3", "Fællesanlæg1"));
+                list.Add(new Area("1CB6D08F-A7F7-4025-B00F-1FA2CEC41ACC", "Fællesanlæg2"));
+                list.Add(new Area("260AA8FA-E70D-4C4C-B6A4-3182ABE0D46C", "Fællesanlæg3"));
+                list.Add(new Area("D0F290E7-2973-476A-A7D2-33995A8C3D0D", "Fællesanlæg4"));
+                list.Add(new Area("067FFDCF-3B15-4CEC-B1F0-7FA85E60BE24", "Fællesanlæg5"));
             }
 
 
@@ -89,7 +86,7 @@ namespace TIProject.BLL
         {
             try
             {
-                using (StreamReader sr = new StreamReader(@"json.txt"))
+                using (StreamReader sr = new StreamReader(@"project.data"))
                 {
                     //List<AnalogSignal> list = (List<AnalogSignal>)JsonConvert.DeserializeObject(sr.ReadToEnd());
                     Project project = (Project)JsonConvert.DeserializeObject(sr.ReadToEnd(), typeof(Project));

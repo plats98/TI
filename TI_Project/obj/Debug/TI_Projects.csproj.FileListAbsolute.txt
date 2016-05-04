@@ -27,6 +27,7 @@ D:\Development\TI\TI_Project\bin\Debug\Newtonsoft.Json.xml
 D:\Development\TI\TI_Project\obj\Debug\TI_Projects.csprojResolveAssemblyReference.cache
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AddressConfig.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AnalogInput.resources
+D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.Areas.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.Main.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.SCADA.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.Properties.Resources.resources

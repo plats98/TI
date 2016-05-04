@@ -1,16 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TIProject.BE
 {
-    public class Project
+    public class Project 
     {
         private Plant _Plant = new Plant();
         private BindingList<AnalogSignal> _AnalogSignals = new BindingList<AnalogSignal>();
+
+        public Project()
+        {
+        }
 
         public Plant Plant
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,45 +9,66 @@ namespace TIProject.BE
 {
     public class Area
     {
-        private int _ID;
-        private string _Name;
-        
-        public Area(int ID, string Name)
+        private readonly string _GUID;
+        private Area _Parrent;
+        private string _Description;
+
+
+        public Area(string guid, string description)
         {
-            _ID = ID;
-            _Name = Name;
+            _GUID = guid;
+            _Description = description;
+            Parrent = null;
         }
+
+        [JsonConstructor]
+        public Area(string guid, string description, Area parrent)
+        {
+            _GUID = guid;
+            _Description = description;
+            Parrent = parrent;
+        }
+
+
 
         public override string ToString()
         {
-            return String.Format("{0} {1} ", _ID, _Name);
-        }
-
-        public int ID
-        {
-            get
-            {
-                return _ID;
-            }
-
-            set
-            {
-                _ID = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return _Name;
-            }
-
-            set
-            {
-                _Name = value;
-            }
+            return String.Format("{0}", Description);
         }
         
+        public string GUID
+        {
+            get
+            {
+                return _GUID;
+            }
+        }
+
+        public Area Parrent
+        {
+            get
+            {
+                return _Parrent;
+            }
+
+            set
+            {
+                _Parrent = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _Description;
+            }
+
+            set
+            {
+                _Description = value;
+            }
+        }
+
     }
 }

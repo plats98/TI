@@ -1,73 +1,35 @@
 {
   "Plant": {
-    "Name": "Hedensted",
-    "Case": "E16-147-1"
+    "Name": "",
+    "Case": ""
   },
   "AnalogSignals": [
     {
-      "KKS": "KE10NDA20CU10",
+      "KKS": "dfgfdgfdg",
       "Address": {
         "ID": 0,
-        "WordType": 2,
-        "DeviceType": 2,
-        "Address": 42414,
-        "Bit": 13,
+        "WordType": 0,
+        "DeviceType": 0,
+        "Address": 0,
+        "Bit": 0,
         "DeviceName": null,
         "DeviceIP": null
       },
       "Description": "dfgfdg",
       "LowHigh": false,
-      "LowLowHighHigh": false,
-      "EGU": "Nm³",
+      "LowLowHighHigh": true,
+      "EGU": "kW",
       "Historian": false,
       "Area1": {
-        "ID": 2,
-        "Name": "Vejnavn2"
+        "GUID": "EDC394E8-1C10-4009-8B67-029FE3ABBFFB",
+        "Parrent": null,
+        "Description": "Vejnavn3"
       },
-      "Area2": null,
-      "Area3": null
-    },
-    {
-      "KKS": "KE10NDA30CU10",
-      "Address": {
-        "ID": 0,
-        "WordType": 0,
-        "DeviceType": 0,
-        "Address": 0,
-        "Bit": 0,
-        "DeviceName": null,
-        "DeviceIP": null
-      },
-      "Description": null,
-      "LowHigh": false,
-      "LowLowHighHigh": false,
-      "EGU": "",
-      "Historian": false,
-      "Area1": null,
       "Area2": {
-        "ID": 5,
-        "Name": "Vejnavn5"
+        "GUID": "260AA8FA-E70D-4C4C-B6A4-3182ABE0D46C",
+        "Parrent": null,
+        "Description": "Fællesanlæg3"
       },
-      "Area3": null
-    },
-    {
-      "KKS": null,
-      "Address": {
-        "ID": 0,
-        "WordType": 0,
-        "DeviceType": 0,
-        "Address": 0,
-        "Bit": 0,
-        "DeviceName": null,
-        "DeviceIP": null
-      },
-      "Description": null,
-      "LowHigh": false,
-      "LowLowHighHigh": false,
-      "EGU": null,
-      "Historian": false,
-      "Area1": null,
-      "Area2": null,
       "Area3": null
     }
   ]

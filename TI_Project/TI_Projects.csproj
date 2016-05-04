@@ -72,6 +72,12 @@
     <Compile Include="GUI\AnalogInput.designer.cs">
       <DependentUpon>AnalogInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Areas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Areas.Designer.cs">
+      <DependentUpon>Areas.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\AnalogInput.resx">
       <DependentUpon>AnalogInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Areas.resx">
+      <DependentUpon>Areas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

@@ -41,11 +41,36 @@ namespace TIProject.BE
 
         public override string ToString()
         {
-            return String.Format("{0}, {1} {2}:{3}",
+            string word = "";
+            switch (_WordType)
+            {
+                case WORDTYPE.INT:
+                    word = "MW";
+                    break;
+                case WORDTYPE.DINT:
+                    word = "MD";
+                    break;
+                case WORDTYPE.FLOAT:
+                    word = "MF";
+                    break;
+                case WORDTYPE.BOOL:
+                    word = "M";
+                    break;
+                default:
+                    word = "ERR";
+                    break;
+            }
+
+            string bit = "";
+            if (_Bit != -1)
+                bit = String.Format(":{0}", _Bit);
+
+
+            return String.Format("{0}, {1}{2}{3}",
                 Enum.GetName(typeof(DEVICETYPE), _DeviceType),
-                Enum.GetName(typeof(WORDTYPE), _WordType),
+                word,
                 _Address,
-                _Bit
+                bit
             );
         }
 
