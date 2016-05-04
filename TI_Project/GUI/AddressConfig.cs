@@ -49,7 +49,7 @@ namespace TIProject.GUI
             txt_Address.Text = analogSignal.Address.Address.ToString();
             cb_Bit.SelectedIndex = analogSignal.Address.Bit;
         }
-
+         
         private void cb_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch ((WORDTYPE)cb_Type.SelectedIndex)
