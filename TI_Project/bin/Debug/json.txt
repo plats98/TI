@@ -1,0 +1,74 @@
+{
+  "Plant": {
+    "Name": "Hedensted",
+    "Case": "E16-147-1"
+  },
+  "AnalogSignals": [
+    {
+      "KKS": "KE10NDA20CU10",
+      "Address": {
+        "ID": 0,
+        "WordType": 2,
+        "DeviceType": 2,
+        "Address": 42414,
+        "Bit": 13,
+        "DeviceName": null,
+        "DeviceIP": null
+      },
+      "Description": "dfgfdg",
+      "LowHigh": false,
+      "LowLowHighHigh": false,
+      "EGU": "Nm³",
+      "Historian": false,
+      "Area1": {
+        "ID": 2,
+        "Name": "Vejnavn2"
+      },
+      "Area2": null,
+      "Area3": null
+    },
+    {
+      "KKS": "KE10NDA30CU10",
+      "Address": {
+        "ID": 0,
+        "WordType": 0,
+        "DeviceType": 0,
+        "Address": 0,
+        "Bit": 0,
+        "DeviceName": null,
+        "DeviceIP": null
+      },
+      "Description": null,
+      "LowHigh": false,
+      "LowLowHighHigh": false,
+      "EGU": "",
+      "Historian": false,
+      "Area1": null,
+      "Area2": {
+        "ID": 5,
+        "Name": "Vejnavn5"
+      },
+      "Area3": null
+    },
+    {
+      "KKS": null,
+      "Address": {
+        "ID": 0,
+        "WordType": 0,
+        "DeviceType": 0,
+        "Address": 0,
+        "Bit": 0,
+        "DeviceName": null,
+        "DeviceIP": null
+      },
+      "Description": null,
+      "LowHigh": false,
+      "LowLowHighHigh": false,
+      "EGU": null,
+      "Historian": false,
+      "Area1": null,
+      "Area2": null,
+      "Area3": null
+    }
+  ]
+}

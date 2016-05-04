@@ -1,0 +1,20 @@
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\bin\Debug\AutoClicker.exe.config
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\bin\Debug\AutoClicker.exe
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\bin\Debug\AutoClicker.pdb
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.csprojResolveAssemblyReference.cache
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.Form1.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.Properties.Resources.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.csproj.GenerateResource.Cache
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.exe
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\obj\Debug\AutoClicker.pdb
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\AutoClicker\bin\Debug\Gma.System.MouseKeyHook.dll
+D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.exe.config
+D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.exe
+D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.pdb
+D:\Development\TI\AutoClicker\bin\Debug\Gma.System.MouseKeyHook.dll
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.csprojResolveAssemblyReference.cache
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.Form1.resources
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.Properties.Resources.resources
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.csproj.GenerateResource.Cache
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.exe
+D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.pdb

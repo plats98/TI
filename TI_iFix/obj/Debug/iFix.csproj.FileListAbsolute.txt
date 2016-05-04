@@ -1,0 +1,7 @@
+C:\Development\TI\iFix\bin\Debug\iFix.dll
+C:\Development\TI\iFix\bin\Debug\iFix.pdb
+C:\Development\TI\iFix\obj\Debug\iFix.csprojResolveAssemblyReference.cache
+C:\Development\TI\iFix\obj\Debug\TI.IFIX.GUI.TIAlarms.resources
+C:\Development\TI\iFix\obj\Debug\iFix.csproj.GenerateResource.Cache
+C:\Development\TI\iFix\obj\Debug\iFix.dll
+C:\Development\TI\iFix\obj\Debug\iFix.pdb

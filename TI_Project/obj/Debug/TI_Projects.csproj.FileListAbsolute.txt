@@ -1,0 +1,35 @@
+D:\Development\TI\TIProject\bin\Debug\TIProject.exe.config
+D:\Development\TI\TIProject\bin\Debug\TIProject.exe
+D:\Development\TI\TIProject\bin\Debug\TIProject.pdb
+D:\Development\TI\TIProject\obj\Debug\TIProject.Form1.resources
+D:\Development\TI\TIProject\obj\Debug\TIProject.Properties.Resources.resources
+D:\Development\TI\TIProject\obj\Debug\TI_Projects.csproj.GenerateResource.Cache
+D:\Development\TI\TIProject\obj\Debug\TIProject.exe
+D:\Development\TI\TIProject\obj\Debug\TIProject.pdb
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\bin\Debug\TIProject.exe.config
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\bin\Debug\TIProject.exe
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\bin\Debug\TIProject.pdb
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\bin\Debug\Newtonsoft.Json.dll
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\bin\Debug\Newtonsoft.Json.xml
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.GUI.AnalogInput.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.GUI.Main.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.GUI.SCADA.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.Properties.Resources.resources
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TI_Projects.csproj.GenerateResource.Cache
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.exe
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TIProject.pdb
+C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_Project\obj\Debug\TI_Projects.csprojResolveAssemblyReference.cache
+D:\Development\TI\TI_Project\bin\Debug\TIProject.exe.config
+D:\Development\TI\TI_Project\bin\Debug\TIProject.exe
+D:\Development\TI\TI_Project\bin\Debug\TIProject.pdb
+D:\Development\TI\TI_Project\bin\Debug\Newtonsoft.Json.dll
+D:\Development\TI\TI_Project\bin\Debug\Newtonsoft.Json.xml
+D:\Development\TI\TI_Project\obj\Debug\TI_Projects.csprojResolveAssemblyReference.cache
+D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AddressConfig.resources
+D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AnalogInput.resources
+D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.Main.resources
+D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.SCADA.resources
+D:\Development\TI\TI_Project\obj\Debug\TIProject.Properties.Resources.resources
+D:\Development\TI\TI_Project\obj\Debug\TI_Projects.csproj.GenerateResource.Cache
+D:\Development\TI\TI_Project\obj\Debug\TIProject.exe
+D:\Development\TI\TI_Project\obj\Debug\TIProject.pdb
