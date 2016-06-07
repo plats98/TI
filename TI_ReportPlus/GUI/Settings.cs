@@ -22,6 +22,7 @@ namespace TI.ReportPlus.GUI
             KeyValuePair<string, string> item = (KeyValuePair<string, string>)listBox_Property.SelectedItem;
             lbl_PropertyName.Text = item.Key;
             lbl_OldValue.Text = item.Value;
+            txtBox_NewValue.Text = item.Value;
         }
 
         private void btn_Update_Click(object sender, EventArgs e)
@@ -74,6 +75,7 @@ namespace TI.ReportPlus.GUI
                     break;
                 case DialogResult.Yes:
                     Property.Save();
+                    Helper.Setup();
                     Logger.ReloadLevels();
                     break;
                 case DialogResult.No:
@@ -82,7 +84,6 @@ namespace TI.ReportPlus.GUI
                 default:
                     break;
             }
-
         }
 
         private void check_Info_CheckedChanged(object sender, EventArgs e)

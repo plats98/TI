@@ -12,7 +12,6 @@ D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.exe.config
 D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.exe
 D:\Development\TI\AutoClicker\bin\Debug\AutoClicker.pdb
 D:\Development\TI\AutoClicker\bin\Debug\Gma.System.MouseKeyHook.dll
-D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.csprojResolveAssemblyReference.cache
 D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.Form1.resources
 D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.Properties.Resources.resources
 D:\Development\TI\AutoClicker\obj\Debug\AutoClicker.csproj.GenerateResource.Cache

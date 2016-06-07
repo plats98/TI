@@ -24,7 +24,6 @@ D:\Development\TI\TI_Project\bin\Debug\TIProject.exe
 D:\Development\TI\TI_Project\bin\Debug\TIProject.pdb
 D:\Development\TI\TI_Project\bin\Debug\Newtonsoft.Json.dll
 D:\Development\TI\TI_Project\bin\Debug\Newtonsoft.Json.xml
-D:\Development\TI\TI_Project\obj\Debug\TI_Projects.csprojResolveAssemblyReference.cache
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AddressConfig.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.AnalogInput.resources
 D:\Development\TI\TI_Project\obj\Debug\TIProject.GUI.Areas.resources

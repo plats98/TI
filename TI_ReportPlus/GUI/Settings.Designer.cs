@@ -40,6 +40,7 @@
             this.check_Info = new System.Windows.Forms.CheckBox();
             this.check_Warn = new System.Windows.Forms.CheckBox();
             this.check_Debug = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_Property
@@ -155,15 +156,27 @@
             this.check_Debug.UseVisualStyleBackColor = true;
             this.check_Debug.CheckedChanged += new System.EventHandler(this.check_Debug_CheckedChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(365, 341);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(222, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "*Genstart programmet ved opdate af SQL info";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(599, 366);
             this.Controls.Add(this.check_Debug);
             this.Controls.Add(this.check_Warn);
             this.Controls.Add(this.check_Info);
             this.Controls.Add(this.lbl_PropertyName);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -195,5 +208,6 @@
         private System.Windows.Forms.CheckBox check_Info;
         private System.Windows.Forms.CheckBox check_Warn;
         private System.Windows.Forms.CheckBox check_Debug;
+        private System.Windows.Forms.Label label4;
     }
 }

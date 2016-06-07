@@ -98,11 +98,8 @@ namespace TI.ReportPlus.BLL
 
         private bool CreateSubscriptionSettings(Subscription subscription, string printer)
         {
-            if (String.IsNullOrWhiteSpace(printer)) printer = Property.Get("Setting_PrinterPath");
-            else {
-                Property.Set("Setting_PrinterPath", printer);
-                Property.Save();
-            }
+            if (String.IsNullOrWhiteSpace(printer))
+                printer = Property.Get("Setting_PrinterPath");
 
             return db.CreateSubscriptionSetting(subscription.ID, "PrinterPath", printer);
         }

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
+using System.Deployment.Application;
 
 namespace TIProject.GUI
 {
@@ -316,7 +317,7 @@ namespace TIProject.GUI
                 //Fix area 1
                 cell = row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area1)];
                 // http://stackoverflow.com/questions/1175645/find-an-item-in-list-by-linq
-                analogSignal.Area1 = factory.GetAreas(null).SingleOrDefault(area => String.Equals(area.GUID,cell.Value.ToString(), StringComparison.OrdinalIgnoreCase));
+                analogSignal.Area1 = factory.GetAreas(null).SingleOrDefault(area => String.Equals(area.GUID, cell.Value.ToString(), StringComparison.OrdinalIgnoreCase));
 
                 //Fix area 2
                 cell = row.Cells[MemberInfoGetting.GetMemberName(() => new AnalogSignal().Area2)];

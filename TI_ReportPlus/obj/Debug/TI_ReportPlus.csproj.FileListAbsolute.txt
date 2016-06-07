@@ -34,7 +34,6 @@ D:\Development\TI\TI_ReportPlus\bin\Debug\ReportPlus.exe.manifest
 D:\Development\TI\TI_ReportPlus\bin\Debug\ReportPlus.application
 D:\Development\TI\TI_ReportPlus\bin\Debug\ReportPlus.exe
 D:\Development\TI\TI_ReportPlus\bin\Debug\ReportPlus.pdb
-D:\Development\TI\TI_ReportPlus\obj\Debug\TI_ReportPlus.csprojResolveAssemblyReference.cache
 D:\Development\TI\TI_ReportPlus\obj\Debug\TI.ReportPlus.GUI.MainView.resources
 D:\Development\TI\TI_ReportPlus\obj\Debug\TI.ReportPlus.GUI.Settings.resources
 D:\Development\TI\TI_ReportPlus\obj\Debug\TI.ReportPlus.Properties.Resources.resources

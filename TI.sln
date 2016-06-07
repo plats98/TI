@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_ReportPlus", "TI_ReportPlus\TI_ReportPlus.csproj", "{9D656C6C-2DBD-40D4-AA7C-051EE44C884B}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoClicker", "AutoClicker\AutoClicker.csproj", "{AAF5CB4F-03EE-4A0C-8555-35371ADAEA6E}"
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Webserver", "Webserver\Webserver.njsproj", "{2AC7C5D4-9D1B-4753-BC5C-923975A464EA}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,11 @@ Global
 		{2AC7C5D4-9D1B-4753-BC5C-923975A464EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AC7C5D4-9D1B-4753-BC5C-923975A464EA}.Release|x64.ActiveCfg = Release|Any CPU
 		{2AC7C5D4-9D1B-4753-BC5C-923975A464EA}.Release|x64.Build.0 = Release|Any CPU
+		{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}.Debug|Any CPU.ActiveCfg = Debug
+		{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}.Debug|x64.ActiveCfg = Debug
+		{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}.Release|Any CPU.ActiveCfg = Release
+		{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}.Release|Any CPU.Build.0 = Release
+		{F03F8A10-6745-4FCE-AE42-ECD70F4F86DA}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

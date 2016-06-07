@@ -20,7 +20,6 @@ C:\Dropbox\Backup\save\Documents\Visual Studio 2015\Projects\TI\TI_iFix\obj\Debu
 D:\Development\TI\TI_iFix\bin\Debug\TI.dll
 D:\Development\TI\TI_iFix\bin\Debug\TI.pdb
 D:\Development\TI\TI_iFix\bin\Debug\TI.tlb
-D:\Development\TI\TI_iFix\obj\Debug\TI_iFix.csprojResolveAssemblyReference.cache
 D:\Development\TI\TI_iFix\obj\Debug\TI.iFix.GUI.AlarmSort.resources
 D:\Development\TI\TI_iFix\obj\Debug\TI.iFix.GUI.AppletViewer.resources
 D:\Development\TI\TI_iFix\obj\Debug\TI.iFix.GUI.ChangeValue.resources

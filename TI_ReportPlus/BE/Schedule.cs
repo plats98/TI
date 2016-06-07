@@ -34,7 +34,9 @@ namespace TI.ReportPlus.BE
         /// <param name="Periode"></param>
         public Schedule(DateTime StartTime, SchedulePeriode Periode)
         {
-            _StartTime = StartTime;
+            _StartTime = new DateTime(StartTime.Year, StartTime.Month, StartTime.Day, StartTime.Hour, StartTime.Minute, StartTime.Second, StartTime.Kind);
+            _NextRun = new DateTime(StartTime.Year, StartTime.Month, StartTime.Day, StartTime.Hour, StartTime.Minute, StartTime.Second, StartTime.Kind);
+
 
             switch (Periode)
             {

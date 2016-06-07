@@ -140,6 +140,15 @@ namespace TI.ReportPlus.BLL
             Property.Set("QuickLink_12_Time", Property.Get("QuickLink_12_Time", ""));
             Property.Set("QuickLink_12_Interval", Property.Get("QuickLink_12_Interval", ""));
 
+            // Printer
+            Property.Set("Printer_TimeOfDay", Property.Get("Printer_TimeOfDay", "05:00:00"));
+            Property.Set("Printer_Date", Property.Get("Printer_Date", DateTime.Now.Date.ToString()));
+            Property.Set("Printer_Interval", Property.Get("Printer_Interval", "15"));
+
+            // PDF
+            Property.Set("PDF_TimeOfDay", Property.Get("PDF_TimeOfDay", "06:00:00")); //DateTime.Now.TimeOfDay.ToString()
+            Property.Set("PDF_Date", Property.Get("PDF_Date", DateTime.Now.Date.ToString()));
+            Property.Set("PDF_Interval", Property.Get("PDF_Interval", "15"));
 
 
             Property.Save();

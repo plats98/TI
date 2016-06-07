@@ -51,10 +51,13 @@
             this.btn_PDF = new System.Windows.Forms.Button();
             this.timePicker_PDF = new System.Windows.Forms.DateTimePicker();
             this.datePicker_PDF = new System.Windows.Forms.DateTimePicker();
+            this.btn_CreateALL = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timerStatusLabel = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.helpProvider = new System.Windows.Forms.HelpProvider();
+            this.txt_Printer_Interval = new System.Windows.Forms.TextBox();
+            this.txt_PDF_Interval = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.grpbox_Quicklink.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -139,6 +142,7 @@
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.txt_Printer_Interval);
             this.groupBox1.Controls.Add(this.btn_Printer);
             this.groupBox1.Controls.Add(this.timePicker_Printer);
             this.groupBox1.Controls.Add(this.datePicker_Printer);
@@ -163,12 +167,12 @@
             // timePicker_Printer
             // 
             this.timePicker_Printer.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker_Printer.Location = new System.Drawing.Point(50, 99);
+            this.timePicker_Printer.Location = new System.Drawing.Point(25, 99);
             this.timePicker_Printer.Name = "timePicker_Printer";
             this.timePicker_Printer.ShowUpDown = true;
             this.timePicker_Printer.Size = new System.Drawing.Size(74, 20);
             this.timePicker_Printer.TabIndex = 1;
-            this.timePicker_Printer.Value = new System.DateTime(2016, 4, 4, 8, 0, 0, 0);
+            this.timePicker_Printer.Value = new System.DateTime(2016, 4, 4, 6, 0, 0, 0);
             // 
             // datePicker_Printer
             // 
@@ -218,15 +222,18 @@
             this.flowLayoutPanel1.Controls.Add(this.grpbox_Quicklink);
             this.flowLayoutPanel1.Controls.Add(this.groupBox1);
             this.flowLayoutPanel1.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel1.Controls.Add(this.btn_CreateALL);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.helpProvider.SetShowHelp(this.flowLayoutPanel1, false);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(638, 244);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // groupBox2
             // 
             this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.txt_PDF_Interval);
             this.groupBox2.Controls.Add(this.btn_PDF);
             this.groupBox2.Controls.Add(this.timePicker_PDF);
             this.groupBox2.Controls.Add(this.datePicker_PDF);
@@ -250,12 +257,12 @@
             // timePicker_PDF
             // 
             this.timePicker_PDF.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timePicker_PDF.Location = new System.Drawing.Point(38, 73);
+            this.timePicker_PDF.Location = new System.Drawing.Point(6, 72);
             this.timePicker_PDF.Name = "timePicker_PDF";
             this.timePicker_PDF.ShowUpDown = true;
             this.timePicker_PDF.Size = new System.Drawing.Size(74, 20);
             this.timePicker_PDF.TabIndex = 1;
-            this.timePicker_PDF.Value = new System.DateTime(2016, 4, 4, 8, 0, 0, 0);
+            this.timePicker_PDF.Value = new System.DateTime(2016, 4, 4, 5, 0, 0, 0);
             // 
             // datePicker_PDF
             // 
@@ -263,6 +270,16 @@
             this.datePicker_PDF.Name = "datePicker_PDF";
             this.datePicker_PDF.Size = new System.Drawing.Size(143, 20);
             this.datePicker_PDF.TabIndex = 1;
+            // 
+            // btn_CreateALL
+            // 
+            this.btn_CreateALL.Location = new System.Drawing.Point(3, 178);
+            this.btn_CreateALL.Name = "btn_CreateALL";
+            this.btn_CreateALL.Size = new System.Drawing.Size(75, 23);
+            this.btn_CreateALL.TabIndex = 2;
+            this.btn_CreateALL.Text = "Create all";
+            this.btn_CreateALL.UseVisualStyleBackColor = true;
+            this.btn_CreateALL.Click += new System.EventHandler(this.btn_CreateALL_Click);
             // 
             // timerStatusLabel
             // 
@@ -274,6 +291,20 @@
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
+            // txt_Printer_Interval
+            // 
+            this.txt_Printer_Interval.Location = new System.Drawing.Point(114, 99);
+            this.txt_Printer_Interval.Name = "txt_Printer_Interval";
+            this.txt_Printer_Interval.Size = new System.Drawing.Size(54, 20);
+            this.txt_Printer_Interval.TabIndex = 3;
+            // 
+            // txt_PDF_Interval
+            // 
+            this.txt_PDF_Interval.Location = new System.Drawing.Point(95, 72);
+            this.txt_PDF_Interval.Name = "txt_PDF_Interval";
+            this.txt_PDF_Interval.Size = new System.Drawing.Size(54, 20);
+            this.txt_PDF_Interval.TabIndex = 4;
             // 
             // MainView
             // 
@@ -287,17 +318,21 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
-            this.Text = "ReportPlus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Report Plus";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.MainView_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.grpbox_Quicklink.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,6 +364,9 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.HelpProvider helpProvider;
+        private System.Windows.Forms.Button btn_CreateALL;
+        private System.Windows.Forms.TextBox txt_Printer_Interval;
+        private System.Windows.Forms.TextBox txt_PDF_Interval;
     }
 }
 

@@ -7,16 +7,30 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Deployment.Application;
 
 namespace TI.ReportPlus.GUI
 {
     public partial class MainView : Form
     {
         private DBHandler dbHandler = new DBHandler();
+        private Settings settings = new Settings();
 
         public MainView()
         {
             InitializeComponent();
+
+          //  Version version = Assembly.GetExecutingAssembly().GetName().Version;
+         //   Text = Text + " " + version.Major + "." + version.Minor + "." + version.Build + " (rev " + version.Revision + ")"; //change form title
+
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment cd = ApplicationDeployment.CurrentDeployment;
+                Version version = cd.CurrentVersion;
+                Text = Text + " " + version.Major + "." + version.Minor + "." + version.Build + " (rev " + version.Revision + ")";
+            }
+
             Helper.Setup();
             Logger.Setup();
         }
@@ -44,6 +58,17 @@ namespace TI.ReportPlus.GUI
                     cb_printers.SelectedIndex = 0;
             }
 
+            // Printer
+            timePicker_Printer.Value = DateTime.Parse(Property.Get("Printer_TimeOfDay"));
+            datePicker_Printer.Value = DateTime.Parse(Property.Get("Printer_Date"));
+            txt_Printer_Interval.Text = Property.Get("Printer_Interval");
+
+            // PDF
+            timePicker_PDF.Value = DateTime.Parse(Property.Get("PDF_TimeOfDay"));
+            datePicker_PDF.Value = DateTime.Parse(Property.Get("PDF_Date"));
+            txt_PDF_Interval.Text = Property.Get("PDF_Interval");
+
+
         }
 
         private void cb_catalogs_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,39 +89,132 @@ namespace TI.ReportPlus.GUI
 
         private void btn_Printer_Click(object sender, EventArgs e)
         {
+            createSubscription_Printer();
+        }
+
+        private void btn_PDF_Click(object sender, EventArgs e)
+        {
+            createSubscription_PDF();
+        }
+
+        private void btn_QuickLink_Click(object sender, EventArgs e)
+        {
+            createQuickLinks();
+        }
+
+        private void toolStripStatusLabel_TextChanged(object sender, EventArgs e)
+        {
+            timerStatusLabel.Interval = 10 * 1000;
+            timerStatusLabel.Start();
+        }
+
+        private void timerStatusLabel_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = string.Empty;
+            toolStripStatusLabel.BackColor = Color.White;
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker backgroundWorker = sender as BackgroundWorker;
+
+            backgroundWorker.WorkerReportsProgress = true;
+            for (int j = 1; j < 10000; j++)
+            {
+                backgroundWorker.ReportProgress((j * 100) / 10000);
+            }
+        }
+
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            toolStripProgressBar.Visible = true;
+            toolStripProgressBar.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            toolStripProgressBar.Value = 0;
+            toolStripProgressBar.Visible = false;
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //settings.Show();
+            settings.ShowDialog(this);
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            helpProvider.GetShowHelp(this);
+        }
+
+        private void createQuickLinks()
+        {
+            backgroundWorker.RunWorkerAsync();
+
+            CatalogItem ci = dbHandler.GetCatalogs().Where(c => c.Name.Equals(cb_catalogs.SelectedItem)).FirstOrDefault();
+
+            if (ci != null)
+            {
+                toolStripStatusLabel.Text = "Created " + dbHandler.CreateLinks(ci) + " Quicklink(s) on " + ci.Name;
+            }
+
+            // Save settings
+            saveCustomSettings();
+        }
+
+        private void createSubscription_Printer()
+        {
             backgroundWorker.RunWorkerAsync();
 
             CatalogItem catalog = dbHandler.GetCatalogs().Where(c => c.Name.Equals(cb_catalogs.SelectedItem)).FirstOrDefault();
             string printer = dbHandler.GetPrinters().Where(p => p.Equals(cb_printers.SelectedItem)).FirstOrDefault();
             DateTime datetime = datePicker_Printer.Value.Date + timePicker_Printer.Value.TimeOfDay;
+            DateTime newDate;
+
+            int interval;
+            if (!Int32.TryParse(Property.Get("Printer_Interval"), out interval))
+            {
+                // TODO: The parsing attempt failed
+                interval = 15;
+            }
 
             // init variables
             List<Subscription> subs = new List<Subscription>();
             Subscription subscription;
 
             // Create subscription (Daily)
+            newDate = new DateTime(datetime.Year, datetime.Month, datetime.Day, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddDays(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Day,
-                new Schedule(datetime, SchedulePeriode.Daily),
+                new Schedule(newDate, SchedulePeriode.Daily),
                 SubscriptionType.Printer
             );
             if (dbHandler.CreateJob(ref subscription, printer)) subs.Add(subscription);
 
             // Create subscription (Monthly)
+            newDate = new DateTime(datetime.Year, datetime.Month, 1, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddMinutes(interval);
+            newDate = newDate.AddMonths(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Month,
-                new Schedule(datetime, SchedulePeriode.Monthly),
+                new Schedule(newDate, SchedulePeriode.Monthly),
                 SubscriptionType.Printer
             );
             if (dbHandler.CreateJob(ref subscription, printer)) subs.Add(subscription);
 
             // Create subscription (Yearly)
+            newDate = new DateTime(datetime.Year, 1, 1, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddMinutes(interval + interval);
+            newDate = newDate.AddYears(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Year,
-                new Schedule(datetime, SchedulePeriode.Yearly),
+                new Schedule(newDate, SchedulePeriode.Yearly),
                 SubscriptionType.Printer
             );
             if (dbHandler.CreateJob(ref subscription, printer)) subs.Add(subscription);
@@ -131,42 +249,79 @@ namespace TI.ReportPlus.GUI
             }
 
             Helper.RestartService("NRPScheduler", 15 * 1000);
+
+            // Save settings
+            saveCustomSettings();
         }
 
-        private void btn_PDF_Click(object sender, EventArgs e)
+        private void saveCustomSettings()
+        {
+            // Printer
+            string printer = dbHandler.GetPrinters().Where(p => p.Equals(cb_printers.SelectedItem)).FirstOrDefault();
+            Property.Set("Setting_PrinterPath", printer);
+            Property.Set("Printer_TimeOfDay", timePicker_Printer.Value);
+            Property.Set("Printer_Date", datePicker_Printer.Value);
+            Property.Set("Printer_Interval", txt_Printer_Interval.Text);
+
+            // PDF
+            Property.Set("PDF_TimeOfDay", timePicker_PDF.Value);
+            Property.Set("PDF_Date", datePicker_PDF.Value);
+            Property.Set("PDF_Interval", txt_PDF_Interval.Text);
+
+            // Save
+            Property.Save();
+        }
+
+        private void createSubscription_PDF()
         {
             backgroundWorker.RunWorkerAsync();
 
             CatalogItem catalog = dbHandler.GetCatalogs().Where(c => c.Name.Equals(cb_catalogs.SelectedItem)).FirstOrDefault();
             DateTime datetime = datePicker_Printer.Value.Date + timePicker_Printer.Value.TimeOfDay;
+            DateTime newDate;
+
+            int interval;
+            if (!Int32.TryParse(Property.Get("PDF_Interval"), out interval))
+            {
+                // TODO: The parsing attempt failed
+                interval = 15;
+            }
 
             // init variables
             List<Subscription> subs = new List<Subscription>();
             Subscription subscription;
 
             // Create subscription (Daily)
+            newDate = new DateTime(datetime.Year, datetime.Month, datetime.Day, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddDays(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Day,
-                new Schedule(datetime, SchedulePeriode.Daily),
+                new Schedule(newDate, SchedulePeriode.Daily),
                 SubscriptionType.PDF
             );
             if (dbHandler.CreateJob(ref subscription)) subs.Add(subscription);
 
             // Create subscription (Monthly)
+            newDate = new DateTime(datetime.Year, datetime.Month, 1, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddMinutes(interval);
+            newDate = newDate.AddMonths(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Month,
-                new Schedule(datetime, SchedulePeriode.Monthly),
+                new Schedule(newDate, SchedulePeriode.Monthly),
                 SubscriptionType.PDF
             );
             if (dbHandler.CreateJob(ref subscription)) subs.Add(subscription);
 
             // Create subscription (Yearly)
+            newDate = new DateTime(datetime.Year, 1, 1, datetime.Hour, datetime.Minute, datetime.Second, datetime.Kind);
+            newDate = newDate.AddMinutes(interval + interval);
+            newDate = newDate.AddYears(1);
             subscription = new Subscription(
                 catalog,
                 SubscriptionPeriode.Year,
-                new Schedule(datetime, SchedulePeriode.Yearly),
+                new Schedule(newDate, SchedulePeriode.Yearly),
                 SubscriptionType.PDF
             );
             if (dbHandler.CreateJob(ref subscription)) subs.Add(subscription);
@@ -201,63 +356,22 @@ namespace TI.ReportPlus.GUI
             }
 
             Helper.RestartService("NRPScheduler", 15 * 1000);
+
+            // Save settings
+            saveCustomSettings();
         }
 
-        private void btn_QuickLink_Click(object sender, EventArgs e)
+        private void createALL()
         {
-            backgroundWorker.RunWorkerAsync();
-
-            CatalogItem ci = dbHandler.GetCatalogs().Where(c => c.Name.Equals(cb_catalogs.SelectedItem)).FirstOrDefault();
-
-            if (ci != null)
-            {
-                toolStripStatusLabel.Text = "Created " + dbHandler.CreateLinks(ci) + " Quicklink(s) on " + ci.Name;
-            }
+            //TODO: Fix toolstripStatusText
+            createQuickLinks();
+            createSubscription_PDF();
+            createSubscription_Printer();
         }
 
-        private void toolStripStatusLabel_TextChanged(object sender, EventArgs e)
+        private void btn_CreateALL_Click(object sender, EventArgs e)
         {
-            timerStatusLabel.Interval = 10*1000;
-            timerStatusLabel.Start();
-        }
-
-        private void timerStatusLabel_Tick(object sender, EventArgs e)
-        {
-            toolStripStatusLabel.Text = string.Empty;
-            toolStripStatusLabel.BackColor = Color.White;
-        }
-
-        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker backgroundWorker = sender as BackgroundWorker;
-
-            backgroundWorker.WorkerReportsProgress = true;
-            for (int j = 1; j < 100000; j++)
-            {
-                backgroundWorker.ReportProgress((j * 100) / 100000);
-            }
-        }
-
-        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            toolStripProgressBar.Visible = true;
-            toolStripProgressBar.Value = e.ProgressPercentage;
-        }
-
-        private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            toolStripProgressBar.Value = 0;
-            toolStripProgressBar.Visible = false;
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Settings().Show();
-        }
-
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            helpProvider.GetShowHelp(this);
+            createALL();
         }
     }
 
