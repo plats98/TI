@@ -1,9 +1,0 @@
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.csprojResolveAssemblyReference.cache
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.ReportPlus.resources
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.Properties.Resources.resources
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.csproj.GenerateResource.Cache
-D:\Development\TI\ReportPlus\bin\Debug\ReportPlus.exe.config
-D:\Development\TI\ReportPlus\bin\Debug\ReportPlus.exe
-D:\Development\TI\ReportPlus\bin\Debug\ReportPlus.pdb
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.exe
-D:\Development\TI\ReportPlus\obj\Debug\ReportPlus.pdb

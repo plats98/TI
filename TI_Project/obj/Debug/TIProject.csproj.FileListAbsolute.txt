@@ -1,9 +1,0 @@
-D:\Development\TI\TIProject\bin\Debug\TIProject.exe.config
-D:\Development\TI\TIProject\bin\Debug\TIProject.exe
-D:\Development\TI\TIProject\bin\Debug\TIProject.pdb
-D:\Development\TI\TIProject\obj\Debug\TIProject.Form1.resources
-D:\Development\TI\TIProject\obj\Debug\TIProject.Properties.Resources.resources
-D:\Development\TI\TIProject\obj\Debug\TIProject.csproj.GenerateResource.Cache
-D:\Development\TI\TIProject\obj\Debug\TIProject.exe
-D:\Development\TI\TIProject\obj\Debug\TIProject.pdb
-D:\Development\TI\TIProject\obj\Debug\TIProject.csprojResolveAssemblyReference.cache
